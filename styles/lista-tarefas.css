@@ -215,3 +215,29 @@ a {
     color: grey;
     text-decoration: line-through;
 }
+
+
+
+.checkbox{
+    display: none;
+}
+
+.checkbox:checked ~ .descripcion p{
+    color:#a52a2a
+
+}
+
+.btn-deletar-tarefa{
+    cursor:pointer;
+    background-color: white;
+}
+
+.btn-add-tarefa{
+    cursor:pointer;
+}
+
+.descripcion div{
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
