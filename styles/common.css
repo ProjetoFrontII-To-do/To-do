@@ -21,3 +21,7 @@ button {
   border: none;
   border-radius: 3px;
 }
+
+html{
+  font-size: 62.5%;
+}

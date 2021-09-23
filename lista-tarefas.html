@@ -1,3 +1,6 @@
+
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -27,7 +30,8 @@
 
   <form class="nova-tarefa">
     <div class="not-done"></div>
-    <input type="text" placeholder="Nova tarefa" id='input-nova-tarefa'/>
+    <input type="text" placeholder="Nova tarefa" id='input-nova-tarefa' minlength="10"/>
+    <input class='data-conclusao' type="date"name="" id="">
     <button class='btn-add-tarefa'>
       <img src="./assets/plus.png" alt="Adicionar Tarefa" />
     </button>
@@ -42,11 +46,18 @@
 
   </ul>
 
-  <div>
-    <div></div>
+  <div id='modal'>
+    <div id='modal-box'>
+      <p>Deseja excluir?</p>
+      <div class='buttons-modal-excluir'>
+        <button id='btn-cancelar'>Cancelar</button>
+        <button id='btn-deletar'>Excluir</button>
+      </div>
+    </div>
   </div>
-
+  
   <script src="./js/app.js"></script>
+  <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js'></script> -->
 </body>
 
 </html>
