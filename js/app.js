@@ -136,6 +136,8 @@ const marcarCheckbox = (id) => {
   let response = await fetch("https://jsonplaceholder.typicode.com/todos/");
   let jsonData = await response.json();
 
+  console.log("json1:", jsonData);
+
   jsonData.forEach((el, i) => {
     if (el.completed) {
       listaTarefasConcluidas.push({
@@ -148,33 +150,44 @@ const marcarCheckbox = (id) => {
         title: el.title,
       });
     }
+  });
 
-    let countId2 = 0;
+  let countId2 = 0;
 
-    console.log(listaTarefasConcluidas[0]);
-
-    listaTarefasConcluidas.forEach((obj) => {
-      $ulTarefasConcluidas.insertAdjacentHTML(
-        "afterbegin",
-        `
+  listaTarefasConcluidas.forEach((obj) => {
+    $ulTarefasConcluidas.insertAdjacentHTML(
+      "afterbegin",
+      `
         <li class="tarefa" id='li${countId2}'>
-        <input id='a${countId2}' type='checkbox' class='checkbox' >
-        <label onclick='marcarCheckbox(a${countId2})' for='a${countId2}' class="not-done label-tarefas-pendentes"></label>
-        <div class="descripcion">
+          <input id='a${countId2}' type='checkbox' class='checkbox' >
+          <label onclick='marcarCheckbox(a${countId2})' for='a${countId2}'></label>
+          <div class="descripcion">
                 <p class="nome">${obj.id}</p>
                 <p class="nome">${obj.title}</p>
-            <div>
-                <button onclick='abrirModal(li${countId2})' class='btn-deletar-tarefa'><img src='../assets/highlight_off_black_24dp.svg' alt=''></button>
-            </div>
-        </div>
-    </li>
+          </div>
+        </li>
       `
-      );
-      countId2++;
-    });
+    );
+    countId2++;
+  });
 
-    // listaTarefasConcluidas.forEach((obj) => {
-    //   $inputNovaTarefa.value = obj.title;
-    // });
+  let countId3 = 0;
+
+  listaTarefasPendentes.forEach((obj) => {
+    $ulTarefasPendentes.insertAdjacentHTML(
+      "afterbegin",
+      `
+        <li class="tarefa" id='li${countId3}'>
+        <input id='a${countId3}' type='checkbox' class='checkbox'>
+        <label onclick='marcarCheckbox(a${countId3})' for='a${countId3}' class="not-done label-tarefas-pendentes"></label>
+          <div class="descripcion">
+                <p class="nome">${obj.id}</p>
+                <p class="nome">${obj.title}</p>
+                <button onclick='abrirModal(li${countId})' class='btn-deletar-tarefa'><img src='../assets/highlight_off_black_24dp.svg' alt=''></button>
+          </div>
+        </li>
+      `
+    );
+    countId2++;
   });
 })();
