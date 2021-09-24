@@ -62,7 +62,7 @@ const addTarefa = () => {
   if ($inputNovaTarefa.value.length < 10) {
     document.querySelector(".nova-tarefa").style.cssText = `
     border: 2px solid red;
-    `; // ! falta tirar o vermelho dps que add a task + add outras validacoes
+    `; // ! falta tirar o vermelho dps que add a task + validacoes
     $btnAddTarefa.setAttribute("disabled");
   } else {
     $ulTarefasPendentes.insertAdjacentHTML(
