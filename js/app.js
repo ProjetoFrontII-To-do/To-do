@@ -10,6 +10,7 @@ const $btnDeletar = document.querySelector("#btn-deletar");
 const $btnCancelar = document.querySelector("#btn-cancelar");
 const $checkbox = document.querySelector(".checkbox");
 const today = new Date().toLocaleDateString("pt-BR");
+const $cardNovaTarefa = document.querySelector(".nova-tarefa");
 // const dataM = moment($dataConclusao.value)
 // let dateFormat = moment($dataConclusao.value).format('DD/MM/YYYY')
 // const dataMoment = moment(dataM, 'DD/MM/YYYY')
@@ -60,10 +61,16 @@ let countId = 0;
 
 const addTarefa = () => {
   if ($inputNovaTarefa.value.length < 10) {
-    document.querySelector(".nova-tarefa").style.cssText = `
+    $cardNovaTarefa.style.cssText = `
     border: 2px solid red;
-    `; // ! falta tirar o vermelho dps que add a task + validacoes
+    `;
     $btnAddTarefa.setAttribute("disabled");
+  } else if ($dataConclusao.value == "") {
+    $dataConclusao.insertAdjacentHTML("beforebegin", `<p>Data obrigatória</p>`);
+    $dataConclusao.style.cssText = `
+    border: 2px solid red;
+    `;
+    // e.preventDefault(); // ! tá adicionando varias mensagens e não some depois que aparece a 1ª vez
   } else {
     $ulTarefasPendentes.insertAdjacentHTML(
       "afterbegin",
@@ -141,5 +148,33 @@ const marcarCheckbox = (id) => {
         title: el.title,
       });
     }
+
+    let countId2 = 0;
+
+    console.log(listaTarefasConcluidas[0]);
+
+    listaTarefasConcluidas.forEach((obj) => {
+      $ulTarefasConcluidas.insertAdjacentHTML(
+        "afterbegin",
+        `
+        <li class="tarefa" id='li${countId2}'>
+        <input id='a${countId2}' type='checkbox' class='checkbox' >
+        <label onclick='marcarCheckbox(a${countId2})' for='a${countId2}' class="not-done label-tarefas-pendentes"></label>
+        <div class="descripcion">
+                <p class="nome">${obj.id}</p>
+                <p class="nome">${obj.title}</p>
+            <div>
+                <button onclick='abrirModal(li${countId2})' class='btn-deletar-tarefa'><img src='../assets/highlight_off_black_24dp.svg' alt=''></button>
+            </div>
+        </div>
+    </li>
+      `
+      );
+      countId2++;
+    });
+
+    // listaTarefasConcluidas.forEach((obj) => {
+    //   $inputNovaTarefa.value = obj.title;
+    // });
   });
 })();
