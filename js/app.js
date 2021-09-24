@@ -1,27 +1,17 @@
-/* <li class="tarefa">
-<div class="not-done"></div>
-<div class="descripcion">
-  <p class="nome">Minha bela tarefa</p>
-  <p class="timestamp">Criada: 19/04/20</p>
-</div>
-</li> */
-
-// let DateFormat = moment().format('DD/MM/YYYY');
-
 const $ulTarefasPendentes = document.querySelector('.tarefas-pendentes');
 const $ulTarefasConcluidas = document.querySelector('ul[class=titulo-concluida]');
 const $inputNovaTarefa = document.querySelector('#input-nova-tarefa');
 const $btnAddTarefa = document.querySelector('.btn-add-tarefa');
-const today = new Date().toLocaleDateString('pt-BR')
-const $dataConclusao = document.querySelector('.data-conclusao')
+const $dataConclusao = document.querySelector('.data-conclusao');
+const $modalFundo = document.querySelector('#modal');
+const $btnDeletar = document.querySelector('#btn-deletar');
+const $btnCancelar = document.querySelector('#btn-cancelar');
+const $checkbox = document.querySelector('.checkbox');
+const today = new Date().toLocaleDateString('pt-BR');
+// const dataM = moment($dataConclusao.value)
+// let dateFormat = moment($dataConclusao.value).format('DD/MM/YYYY')
+// const dataMoment = moment(dataM, 'DD/MM/YYYY')
 
-
-
-// const dataMoment = moment(data, 'DD/MM/YYYY')
-// const calendario = document.querySelector('.data-conclusao'); 
-// const data = moment(calendario.value)
-// let dateFormat = moment(calendario.value).format('DD/MM/YYYY')
-// const dataMoment = moment(data, 'DD/MM/YYYY')
 let data = new Date().toLocaleDateString('en').split('/');
 let dataTratada;
 if(data[0]<10 && data[1]<10){
@@ -36,48 +26,68 @@ if(data[0]<10 && data[1]<10){
 
 $dataConclusao.min=dataTratada
 
+
+let arrayIdLi=[]
+const fecharModal=e=>{
+    if(e.target.id === 'modal'){
+        $modalFundo.style.cssText=`display: none`
+    }
+}
+const btnDeletarTarefa=e=>{
+    deletarTarefa(arrayIdLi[0])
+    $modalFundo.style.cssText=`display: none`
+}
+const btnCancelarTarefa=e=>{
+    $modalFundo.style.cssText=`display: none`
+    $btnDeletar.removeEventListener('click', btnDeletarTarefa)
+    $btnCancelar.removeEventListener('click', btnCancelarTarefa)
+}
+
+const abrirModal=id=>{  
+    arrayIdLi=[]
+    arrayIdLi.push(id)
+    $modalFundo.addEventListener('click', fecharModal)
+    $modalFundo.style.cssText=`display: block`
+    $btnDeletar.addEventListener('click', btnDeletarTarefa)
+    $btnCancelar.addEventListener('click', btnCancelarTarefa)
+}
+
 let countId = 0;
 /**
  * Adiciona uma nova tarefa na "ul" de tarefas pendentes do HTML. No final, acrescenta mais 1 à variável "countId", para que o id de cada tarefa seja dinâmico.
  */
-
-const abrirModal=id=>{
-    document.querySelector('#modal').style.cssText=
-    `
-        display: block;
-    `
-    document.querySelector('#btn-deletar').addEventListener('click', e=>{
-        deletarTarefa(id)
-        document.querySelector('#modal').style.cssText=
-        `
-            display: none;
-        `
-    })
-    
-}
 const addTarefa = ()=>{
     $ulTarefasPendentes.insertAdjacentHTML('afterbegin',
     `
     <li class="tarefa" id='li${countId}'>
-        <input id='${countId}' type='checkbox' class='checkbox'>
-        <label for='${countId}' class="not-done"></label>
+        <input id='a${countId}' type='checkbox' class='checkbox'>
+        <label onclick='marcarCheckbox(a${countId})' for='a${countId}' class="not-done label-tarefas-pendentes"></label>
         <div class="descripcion">
                 <p class="nome">${$inputNovaTarefa.value}</p>
             <div>
-                <p class="timestamp">Criada: ${today}</p>
-                <p class="timestamp">Conclusão: ${$dataConclusao.value}</p>
+                <p class="timestamp">Data da criação: ${today}</p>
+                <p class="timestamp">Data final: ${$dataConclusao.value}</p>
                 <button onclick='abrirModal(li${countId})' class='btn-deletar-tarefa'><img src='../assets/highlight_off_black_24dp.svg' alt=''></button>
             </div>
         </div>
     </li>
     `)
-    // <button onclick='deletarTarefa(li${countId})' class='btn-deletar-tarefa'><img src='../assets/highlight_off_black_24dp.svg' alt=''></button>
     countId++;
+    // document.querySelector('.btn-deletar-tarefa').addEventListener('click', e=>{
+    //     abrirModal(e.target.parentNode.parentNode.parentNode.parentNode.id)
+    // })
+
+   
+        
 }
+
 
 //Esses arrays armazenarão os objetos "tarefas" que vierem do endpoint "https://jsonplaceholder.typicode.com/todos/". Cada objeto conterá um "id" e um "title".
 let listaTarefasPendentes=[];
 let listaTarefasConcluidas=[];
+
+
+
 
 
 $btnAddTarefa.addEventListener('click', e=>{
@@ -91,11 +101,24 @@ $btnAddTarefa.addEventListener('click', e=>{
  * @param {*} id 
  */
 const deletarTarefa=id=>{
+   console.log(id.id)
     const el = document.querySelector(`#${id.id}`);
     el.parentNode.removeChild(el);
 }
 
+let nodeListCheckbox = document.querySelectorAll('.checkbox')
+    
 
+let nodeListLabel = document.querySelectorAll('label')
+
+const marcarCheckbox=(id)=>{
+    let el = document.querySelector(`#${id.id}`)
+    if(!el.checked){
+        console.log(el.parentNode)
+        console.log(el.parentElement)
+        $ulTarefasConcluidas.appendChild(el.parentNode)
+    }
+}
 
 /**
  * Recupera e trata os dados da Fake API "jsonplaceholder".
@@ -118,4 +141,5 @@ const deletarTarefa=id=>{
             })
         }
     })
+
 })()
