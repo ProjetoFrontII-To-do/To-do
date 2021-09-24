@@ -70,7 +70,7 @@ const addTarefa = () => {
     $dataConclusao.style.cssText = `
     border: 2px solid red;
     `;
-    // e.preventDefault(); // ! tá adicionando varias mensagens e não some depois que aparece a 1ª vez
+    // e.preventDefault(); // ! tá adicionando varias mensagens e não some depois que aparece a 1ª vez ...
   } else {
     $ulTarefasPendentes.insertAdjacentHTML(
       "afterbegin",
