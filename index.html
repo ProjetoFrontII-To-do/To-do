@@ -12,22 +12,22 @@
     <form>
         <h1>Cadastro de conta</h1>
         <div class="image"></div>
-        <label>
-      Nome:
-      <input type="text">
-    </label>
-        <label>
-      Senha:
-      <input type="password">
-    </label>
-        <label>
-      Repetir senha:
-      <input type="password">
-    </label>
-        <label>
-      E-mail:
-      <input type="text">
-    </label>
+        <label> 
+          Nome:
+          <input id="nome" type="text" placeholder="Preencha seu nome completo" required>
+        </label>        
+          <label>
+        Senha:
+        <input type="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*[ !@#$%^&_=+-]).{6,12}$" title="A senha deve conter entre 6 a 12 caracteres, deve conter pelo menos uma letra maiúscula, um número e não deve conter símbolos " required>
+      </label>
+          <label>
+        Repetir senha:
+        <input type="password"  required>
+      </label>
+          <label>
+        E-mail:
+        <input type="email" placeholder="seunome@email.com" required>
+      </label>
         <button>Criar Conta</button>
         <div class="form-footer">
             <p>ToDo</p>
