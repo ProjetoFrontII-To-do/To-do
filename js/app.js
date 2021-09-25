@@ -13,7 +13,7 @@ const $cardNovaTarefa = document.querySelector(".nova-tarefa");
 // let dateFormat = moment($dataConclusao.value).format('DD/MM/YYYY')
 // const dataMoment = moment(dataM, 'DD/MM/YYYY')
 
-let data = new Date().toLocaleDateString('en').split('/');
+let data = new Date().toLocaleDateString("en").split("/");
 let dataTratada;
 if (data[0] < 10 && data[1] < 10) {
     dataTratada = `${data[2]}-0${data[0]}-0${data[1]}`;
@@ -27,22 +27,21 @@ if (data[0] < 10 && data[1] < 10) {
 
 $dataConclusao.min = dataTratada;
 
-
-let arrayIdLi = []
-const fecharModal = e => {
-    if (e.target.id === 'modal') {
-        $modalFundo.style.cssText = `display: none`;
-    }
-}
-const btnDeletarTarefa = e => {
-    deletarTarefa(arrayIdLi[0])
+let arrayIdLi = [];
+const fecharModal = (e) => {
+  if (e.target.id === "modal") {
     $modalFundo.style.cssText = `display: none`;
-}
-const btnCancelarTarefa = e => {
-    $modalFundo.style.cssText = `display: none`;
-    $btnDeletar.removeEventListener('click', btnDeletarTarefa)
-    $btnCancelar.removeEventListener('click', btnCancelarTarefa)
-}
+  }
+};
+const btnDeletarTarefa = (e) => {
+  deletarTarefa(arrayIdLi[0]);
+  $modalFundo.style.cssText = `display: none`;
+};
+const btnCancelarTarefa = (e) => {
+  $modalFundo.style.cssText = `display: none`;
+  $btnDeletar.removeEventListener("click", btnDeletarTarefa);
+  $btnCancelar.removeEventListener("click", btnCancelarTarefa);
+};
 
 const abrirModal = id => {
     arrayIdLi = []
