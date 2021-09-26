@@ -50,7 +50,7 @@ a {
   width: 1em;
   border-radius: 50%;
   cursor: pointer;
-  margin-top: 1px;
+  margin-top: 4px;
   margin-bottom: 1px;
 }
 
@@ -70,7 +70,7 @@ body.dark {
 
 body.dark .toggle:before {
   content: "\f185";
-  color: #8e64c5;
+  color: #be18e7;
 }
 
 body.dark header {
@@ -97,7 +97,7 @@ body.dark #input-nova-tarefa {
 }
 
 body.dark #input-nova-tarefa::placeholder {
-  color: #8e64c5;
+  color: var(--secondary);
 }
 
 body.dark .data-conclusao {
@@ -107,24 +107,25 @@ body.dark .data-conclusao {
 }
 
 body.dark .not-done {
-  background: #8e64c5;
+  background: #323840;
   color: #707b83;
   box-shadow: 2px 2px 5px #494f53;
+  border: 2px solid var(--secondary);
 }
 
 body.dark .titulo-concluida-h2 {
   background: #323840;
-  color: #8e64c5;
+  color: var(--secondary);
   box-shadow: 2px 2px 5px #494f53;
 }
 
 body.dark a {
-  color: #8e64c5;
-  border-bottom: 0.2em solid #8e64c5;
+  color: var(--secondary);
+  border-bottom: 0.2em solid var(--secondary);
 }
 
 body.dark .user-info p {
-  color: #8e64c5;
+  color: var(--secondary);
 }
 
 /* Novas tarefa ----------------------------------------------------------- */
