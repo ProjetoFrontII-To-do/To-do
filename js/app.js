@@ -69,7 +69,7 @@ const addTarefa = async () => {
     $dataConclusao.style.cssText = `
         border: 1px solid red;
         `;
-    e.preventDefault(); // ! tá adicionando varias mensagens e não some depois que aparece a 1ª vez ...
+    // e.preventDefault(); // ! tá adicionando varias mensagens e não some depois que aparece a 1ª vez ...
   } else {
     $ulTarefasPendentes.insertAdjacentHTML(
       "afterbegin",
@@ -217,6 +217,8 @@ const marcarCheckbox = (id) => {
     //   countId2++;
   });
 })();
+
+// Dark mode
 
 const $body = document.querySelector("body");
 const $toggle = document.querySelector(".toggle");

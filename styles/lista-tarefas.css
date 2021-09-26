@@ -84,6 +84,10 @@ body.dark .descripcion {
   box-shadow: 2px 2px 5px #494f53;
 }
 
+body.dark .nome {
+  color: var(--secondary);
+}
+
 body.dark .nova-tarefa {
   background: #323840;
   color: #707b83;
@@ -92,12 +96,16 @@ body.dark .nova-tarefa {
 
 body.dark #input-nova-tarefa {
   background: #323840;
-  color: #707b83;
+  color: var(--secondary);
   box-shadow: 2px 2px 5px #494f53;
 }
 
 body.dark #input-nova-tarefa::placeholder {
-  color: var(--secondary);
+  color: #707b83;
+}
+
+body.dark .nova-tarefa input[type="text"] {
+  border-bottom: 1px solid #707b83;
 }
 
 body.dark .data-conclusao {
@@ -187,6 +195,11 @@ body.dark .user-info p {
   margin-right: 1em;
   border-radius: 50%;
   cursor: pointer;
+}
+
+.data-conclusao {
+  padding: 5px;
+  margin-left: 20px;
 }
 
 /* Lista de tarefas ----------------------------------------------------------- */
