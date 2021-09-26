@@ -136,6 +136,37 @@ body.dark .user-info p {
   color: var(--secondary);
 }
 
+body.dark .titulo-concluida .tarefa .descripcion {
+  background: #323840;
+  color: var(--secondary);
+  box-shadow: 2px 2px 5px #494f53;
+}
+body.dark #modal-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 10rem;
+  height:5rem;
+  color: #fff;
+  background-color: #3a3e74;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem;
+  box-shadow: 1.5px 1.5px 5px black;
+  gap: 1rem;
+  border-radius: .5rem;
+}
+
+body.dark .buttons-modal-excluir button {
+  cursor: pointer;
+  width: 5rem;
+  padding: .3rem;
+  color: #fff;
+  background-color: #7753a8;
+}
+
 /* Novas tarefa ----------------------------------------------------------- */
 
 .nova-tarefa {
@@ -336,11 +367,11 @@ body.dark .user-info p {
 }
 
 .checkbox:checked ~ .descripcion p {
-  width: 65%;
+  width: 60%;
   /* text-decoration: line-through; */
 }
 .checkbox:checked ~ .descripcion div {
-  width: 35%;
+  width: 40%;
 }
 
 .btn-deletar-tarefa {
@@ -379,14 +410,53 @@ body.dark .user-info p {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 30rem;
-  height: 25rem;
-  background-color: aquamarine;
+  width: 10rem;
+  height:5rem;
+  color: #fff;
+  background-color: #7F86EB;
   transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 2rem;
+  box-shadow: 1.5px 1.5px 5px black;
+  gap: 1rem;
+  border-radius: .5rem;
 }
 #modal-box p {
 }
 
 .buttons-modal-excluir button {
   cursor: pointer;
+  width: 5rem;
+  padding: .3rem;
+  color: #fff;
+  background-color: #8E65C7;
+}
+.buttons-modal-excluir {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+  gap: 1rem;
+}
+.data-conclusao{
+  border:none;
+}
+
+/* <div id="modal">
+<div id="modal-box">
+  <p>Deseja excluir?</p>
+  <div class="buttons-modal-excluir">
+    <button id="btn-cancelar">Cancelar</button>
+    <button id="btn-deletar">Excluir</button>
+  </div>
+</div>
+</div> */
+#textarea{
+  /* display: none; */
+}
+
+#btn-deletar2{
+  
 }

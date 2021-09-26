@@ -5,6 +5,7 @@ const $ulTarefasConcluidas = document.querySelector(
 const $inputNovaTarefa = document.querySelector("#input-nova-tarefa");
 const $btnAddTarefa = document.querySelector(".btn-add-tarefa");
 const $dataConclusao = document.querySelector(".data-conclusao");
+// const $dataConclusao2 = document.querySelector(".data-conclusao2"); //FIXME:teste
 const $modalFundo = document.querySelector("#modal");
 const $btnDeletar = document.querySelector("#btn-deletar");
 const $btnCancelar = document.querySelector("#btn-cancelar");
@@ -54,6 +55,8 @@ const abrirModal = (id) => {
   $btnCancelar.addEventListener("click", btnCancelarTarefa);
 };
 
+
+
 let countId = 0;
 /**
  * Adiciona uma nova tarefa na "ul" de tarefas pendentes do HTML. No final, acrescenta mais 1 à variável "countId", para que o id de cada tarefa seja dinâmico.
@@ -71,6 +74,14 @@ const addTarefa = async () => {
         `;
     // e.preventDefault(); // ! tá adicionando varias mensagens e não some depois que aparece a 1ª vez ...
   } else {
+    let dataConclusaoArray = $dataConclusao.value.split('-');
+    let dataConclusaoTratada = dataConclusaoArray[2] + "/" + dataConclusaoArray[1] + "/" + dataConclusaoArray[0]
+    document.querySelector(".nova-tarefa").style.cssText = `
+    border: none;
+    `;
+    $dataConclusao.style.cssText = `
+    border: none;
+    `;
     $ulTarefasPendentes.insertAdjacentHTML(
       "afterbegin",
       `
@@ -80,8 +91,8 @@ const addTarefa = async () => {
                 <div class="descripcion">
                         <p class="nome">${$inputNovaTarefa.value}</p>
                     <div class='datas-e-btn'>
-                        <p class="timestamp">Data da criação: ${today}</p>
-                        <p class="timestamp">Data final: ${$dataConclusao.value}</p>
+                        <p class="timestamp">Criada em: ${today}</p>
+                        <p class="timestamp">Data final: ${dataConclusaoTratada}</p>
                         <button onclick='abrirModal(li${countId})' class='btn-deletar-tarefa'><img src='../assets/highlight_off_black_24dp.svg' alt=''></button>
                     </div>
                 </div>
@@ -171,6 +182,7 @@ const marcarCheckbox = (id) => {
                         <p class="timestamp">Tarefa Finalizada</p>
                         <button onclick='abrirModal(li2${obj.id})' class='btn-deletar-tarefa'><img src='../assets/highlight_off_black_24dp.svg' alt=''></button>
                     </div>
+                    
                 </div>
             </li>
             `
@@ -187,7 +199,6 @@ const marcarCheckbox = (id) => {
   });
 
   // let countId3 = 0;
-
   listaTarefasPendentes.forEach((obj) => {
     $ulTarefasPendentes.insertAdjacentHTML(
       "afterbegin",
@@ -198,23 +209,18 @@ const marcarCheckbox = (id) => {
                 <div class="descripcion">
                         <p class="nome">${obj.title}</p>
                     <div>
-                        <p class="timestamp">Data da criação: ${today}</p>
+                        <p class="timestamp">Criada em: ${today}</p>
                         <p class="timestamp">Data final: indefinida</p>
                         <button onclick='abrirModal(li3${obj.id})' class='btn-deletar-tarefa'><img src='../assets/highlight_off_black_24dp.svg' alt=''></button>
                     </div>
+
                 </div>
             </li>
             `
-      //   <li class="tarefa" id='li3${obj.id}'>
-      //   <input id='${obj.id}' type='checkbox' class='checkbox' >
-      //   <label onclick='marcarCheckbox(${obj.id})' for='${obj.id}'></label>
-      //   <div class="descripcion">
-      //         <p class="nome">${obj.id}</p>
-      //         <p class="nome">${obj.title}</p>
-      //   </div>
-      // </li>
+            // <textarea id='textarea' name="" id="" cols="30" rows="10"></textarea> 
+            // <button id='btn-deletar2'>Deletar</button>
+
     );
-    //   countId2++;
   });
 })();
 
