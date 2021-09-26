@@ -36,6 +36,97 @@ a {
   margin-left: 0.7em;
 }
 
+/* DARK MODE */
+
+.toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  padding: 0.7em 0.7em;
+  background-color: #707b83;
+  opacity: 0.4;
+  height: 1em;
+  width: 1em;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+.toggle:before {
+  content: "\f186";
+  font-family: fontAwesome;
+  color: #fff;
+}
+
+body {
+  transition: background 0.5s;
+}
+
+body.dark {
+  background: #24292d;
+}
+
+body.dark .toggle:before {
+  content: "\f185";
+  color: #8e64c5;
+}
+
+body.dark header {
+  box-shadow: 2px 2px 5px #494f53;
+  background: linear-gradient(90deg, #4d545e, #24292d);
+}
+
+body.dark .descripcion {
+  background: #323840;
+  color: #707b83;
+  box-shadow: 2px 2px 5px #494f53;
+}
+
+body.dark .nova-tarefa {
+  background: #323840;
+  color: #707b83;
+  box-shadow: 2px 2px 5px #494f53;
+}
+
+body.dark #input-nova-tarefa {
+  background: #323840;
+  color: #707b83;
+  box-shadow: 2px 2px 5px #494f53;
+}
+
+body.dark #input-nova-tarefa::placeholder {
+  color: #8e64c5;
+}
+
+body.dark .data-conclusao {
+  background: #323840;
+  color: #707b83;
+  box-shadow: 2px 2px 5px #494f53;
+}
+
+body.dark .not-done {
+  background: #8e64c5;
+  color: #707b83;
+  box-shadow: 2px 2px 5px #494f53;
+}
+
+body.dark .titulo-concluida-h2 {
+  background: #323840;
+  color: #8e64c5;
+  box-shadow: 2px 2px 5px #494f53;
+}
+
+body.dark a {
+  color: #8e64c5;
+  border-bottom: 0.2em solid #8e64c5;
+}
+
+body.dark .user-info p {
+  color: #8e64c5;
+}
+
 /* Novas tarefa ----------------------------------------------------------- */
 
 .nova-tarefa {
@@ -161,11 +252,11 @@ a {
   width: 50%;
   margin: auto;
 }
-.tarefa .descripcion p{
+.tarefa .descripcion p {
   width: 65%;
 }
 
-.tarefa .descripcion div{
+.tarefa .descripcion div {
   width: 35%;
 }
 
@@ -230,14 +321,13 @@ a {
   display: none;
 }
 
-.checkbox:checked ~.descripcion p{
+.checkbox:checked ~ .descripcion p {
   width: 65%;
-    /* text-decoration: line-through; */
+  /* text-decoration: line-through; */
 }
-.checkbox:checked ~.descripcion div{
+.checkbox:checked ~ .descripcion div {
   width: 35%;
 }
-
 
 .btn-deletar-tarefa {
   cursor: pointer;
