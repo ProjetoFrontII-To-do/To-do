@@ -136,6 +136,12 @@ body.dark .user-info p {
   color: var(--secondary);
 }
 
+body.dark .titulo-concluida .tarefa .descripcion {
+  background: #323840;
+  color: var(--secondary);
+  box-shadow: 2px 2px 5px #494f53;
+}
+
 /* Novas tarefa ----------------------------------------------------------- */
 
 .nova-tarefa {
@@ -200,6 +206,22 @@ body.dark .user-info p {
 .data-conclusao {
   padding: 5px;
   margin-left: 20px;
+  margin-top: 12px;
+}
+
+.data-conc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 58px;
+}
+
+.mensagem-erro {
+  position: absolute;
+  bottom: 0;
+  font-size: 12px;
+  color: red;
 }
 
 /* Lista de tarefas ----------------------------------------------------------- */
