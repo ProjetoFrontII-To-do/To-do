@@ -3,6 +3,8 @@ const $ulTarefasConcluidas = document.querySelector(
   "ul[class=titulo-concluida]"
 );
 const $inputNovaTarefa = document.querySelector("#input-nova-tarefa");
+const $formNovaTarefa = document.querySelector(".nova-tarefa");
+const $dataConclusaoMsg = document.querySelector(".mensagem-erro");
 const $btnAddTarefa = document.querySelector(".btn-add-tarefa");
 const $dataConclusao = document.querySelector(".data-conclusao");
 // const $dataConclusao2 = document.querySelector(".data-conclusao2"); //FIXME:teste
@@ -68,7 +70,7 @@ const addTarefa = async () => {
     `; // ! falta tirar o vermelho dps que add a task
     $btnAddTarefa.setAttribute("disabled");
   } else if ($dataConclusao.value == "") {
-    $dataConclusao.insertAdjacentHTML("beforebegin", `<p>Data obrigatória</p>`);
+    $dataConclusaoMsg.textContent = "Data obrigatória";
     $dataConclusao.style.cssText = `
         border: 1px solid red;
         `;

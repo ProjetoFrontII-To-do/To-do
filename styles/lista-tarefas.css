@@ -231,6 +231,22 @@ body.dark .buttons-modal-excluir button {
 .data-conclusao {
   padding: 5px;
   margin-left: 20px;
+  margin-top: 12px;
+}
+
+.data-conc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  height: 58px;
+}
+
+.mensagem-erro {
+  position: absolute;
+  bottom: 0;
+  font-size: 12px;
+  color: red;
 }
 
 /* Lista de tarefas ----------------------------------------------------------- */
@@ -458,5 +474,5 @@ body.dark .buttons-modal-excluir button {
 }
 
 #btn-deletar2{
-  
+
 }
