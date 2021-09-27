@@ -171,6 +171,13 @@ body.dark .api {
   background: #323840;
 }
 
+body.dark .textarea-button textarea{
+  border:none;
+  background: #323840;
+  color: var(--secondary);
+  box-shadow: 2px 2px 5px #494f53;
+} 
+
 /* Novas tarefa ----------------------------------------------------------- */
 
 .nova-tarefa {
@@ -272,6 +279,7 @@ body.dark .api {
   align-items: center;
   margin: 20px auto;
   color: var(--secondary);
+  cursor: pointer;
 }
 
 /* Lista de tarefas ----------------------------------------------------------- */
@@ -311,7 +319,7 @@ body.dark .api {
   bottom: 100%;
   left: calc(0.75em - 1px);
   display: block;
-  height: 3em;
+  height: 8em;
   width: 2px;
   background-color: var(--secondary);
 }
@@ -322,12 +330,12 @@ body.dark .api {
   top: 100%;
   left: calc(0.75em - 1px);
   display: block;
-  height: 4.5em;
+  height: 17.5em;
   width: 2px;
   background-color: var(--secondary);
 }
 
-.tarefa .descripcion {
+/* .tarefa .descripcion {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -344,7 +352,7 @@ body.dark .api {
 
 .tarefa .descripcion div {
   width: 35%;
-}
+} */
 
 .tarefa .nome {
   font-weight: bold;
@@ -393,7 +401,7 @@ body.dark .api {
 .titulo-concluida .not-done::after {
   background-color: grey !important;
 }
-
+/* 
 .titulo-concluida .tarefa .descripcion {
   background-color: rgb(228, 228, 228);
 }
@@ -410,8 +418,8 @@ body.dark .api {
 .checkbox:checked ~ .descripcion p {
   width: 60%;
   /* text-decoration: line-through; */
-}
-.checkbox:checked ~ .descripcion div {
+/* } */
+/* .checkbox:checked ~ .descripcion div {
   width: 40%;
 }
 
@@ -435,7 +443,7 @@ body.dark .api {
   text-overflow: ellipsis;
   white-space: nowrap;
   margin-right: 2rem;
-}
+}  */
 
 #modal {
   display: none;
@@ -485,18 +493,187 @@ body.dark .api {
   border: none;
 }
 
-/* <div id="modal">
-<div id="modal-box">
-  <p>Deseja excluir?</p>
-  <div class="buttons-modal-excluir">
-    <button id="btn-cancelar">Cancelar</button>
-    <button id="btn-deletar">Excluir</button>
-  </div>
-</div>
-</div> */
 #textarea {
   /* display: none; */
 }
 
 #btn-deletar2 {
+}
+
+
+
+
+/* 
+<li class="tarefa" id='li3${obj.id}'>
+<input id='c${obj.id}' type='checkbox' class='checkbox'>
+<label onclick='marcarCheckbox(c${obj.id})' for='c${obj.id}' class="not-done label-tarefas-pendentes"></label>
+<div class="descripcion">
+        <p class="nome">${obj.title}</p>
+    <div>
+        <p class="timestamp">Data final: indefinida</p>   
+        <input type='checkbox' class='checkbox-vermais' id='vermais${obj.id}'> 
+        <label onclick='vermais(c${obj.id})' for='vermais${obj.id}' class="ver mais">ver mais</label>   
+    </div>
+    <div>
+      <div>
+        <label for='textarea${obj.id}'>Descrição</label>
+        <p class="timestamp">Criada em: ${today}</p>
+      </div>
+      <textarea id='textarea${obj.id}' name=""cols="30" rows="10"></textarea>
+      <button onclick='abrirModal(li3${obj.id})' class='btn-deletar-tarefa'>Deletar</button>
+    </div>
+</div>
+</li> */
+
+
+.descripcion {
+  height: 100%;
+  transition: max-height .2s;
+  overflow: hidden;
+  max-height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 80%;
+  background-color: rgb(255, 255, 255);
+  flex: 1;
+  padding: 1em 2em;
+  box-shadow: 2px 2px 5px lightgrey;
+  gap:1rem;
+
+}
+
+.descripcion div {
+  width: 100%;
+
+}
+
+/* .tarefa .descripcion .nome {
+  color: rgb(43, 41, 41);
+} */
+
+.titulo-e-data{
+  display: flex;
+  /* width: 100%; */
+  justify-content: space-between;
+  /* flex-direction: row; */
+  align-items: center;
+  margin-top: 1rem;
+}
+.titulo-e-data input{
+  display: none;
+}
+
+.titulo-e-data label::before{
+  content: "";
+  display: block;
+  width: 20px;
+  height: 20px;
+  background-image: url(../assets/expand_more_black_24dp.svg);
+  cursor: pointer;
+  margin-left: 2rem;
+}
+.div-interna-descricao-data{
+  /* display: none; */
+  /* width: 100%; */
+  justify-content: space-between;
+  flex-direction: row;
+  visibility: hidden;
+}
+
+.div-interna-descricao-data label{
+  font-size: .9em;
+  color: rgba(63, 9, 68, 0.77);
+  font-weight: bold;
+  margin-bottom: .4rem;
+}
+.textarea-button{
+  /* display: none; */
+  /* width: 100%; */
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: flex-end;
+  visibility: hidden;
+}
+.textarea-button textarea{
+  padding: .5rem;
+  resize: none;
+  border: none;
+  outline: none;
+  box-shadow: inset 0px 0px 3px 3px rgba(88, 63, 121, 0.77);
+} 
+.titulo-e-data div{
+  display: flex;
+  width: 45%;
+  justify-content: flex-end;
+  /* flex-direction: row; */
+  font-size: 1.2em;
+}
+.checkbox {
+  display: none;
+}
+
+/* .checkbox:checked ~ .descripcion p {
+  width: 60%;
+
+}
+.checkbox:checked ~ .descripcion div {
+  width: 40%;
+} */
+
+.btn-deletar-tarefa {
+  cursor: pointer;
+  background-color: rgb(116, 1, 136);
+  padding: .5rem 1rem;
+  color: #fff;
+}
+.btn-add-tarefa {
+  cursor: pointer;
+}
+
+/* .descripcion div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+} */
+
+.nome {
+  overflow: hidden; 
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 2rem;
+  width: 100%;
+}
+
+
+/* Tarefas na parte de tarefas concluídas */
+
+.titulo-concluida .descripcion {
+  max-height: 1.3rem;
+  background-color: #d3d3d3;
+}
+
+body.dark .titulo-concluida .nome{
+  color:rgb(95, 95, 95);
+  font-weight: 300;
+  text-decoration: line-through;
+}
+.titulo-concluida .nome{
+  color:rgb(95, 95, 95);
+  font-weight: 300;
+  text-decoration: line-through;
+}
+.titulo-concluida .titulo-e-data{
+  margin-top: 0;
+}
+.titulo-concluida .div-interna-descricao-data{
+  display: none;
+}
+
+.titulo-concluida .textarea-button{
+  display: none;
+}
+
+.titulo-concluida .titulo-e-data label::before{
+ display: none;
 }

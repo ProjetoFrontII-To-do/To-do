@@ -101,25 +101,28 @@ const addTarefa = async () => {
             <li class="tarefa" id='li${countId}'>
                 <input id='a${countId}' type='checkbox' class='checkbox'>
                 <label onclick='marcarCheckbox(a${countId})' for='a${countId}' class="not-done label-tarefas-pendentes"></label>
-                <div class="descripcion">
+                <div class="descripcion" id='descripciona${countId}'>
+                  <div class='titulo-e-data' id='titulo-e-dataa${countId}'>
                         <p class="nome">${$inputNovaTarefa.value}</p>
-                    <div class='datas-e-btn'>
-                        <p class="timestamp">Criada em: ${today}</p>
-                        <p class="timestamp">Data final: ${dataConclusaoTratada}</p>
-                        <button onclick='abrirModal(li${countId})' class='btn-deletar-tarefa'><img src='../assets/highlight_off_black_24dp.svg' alt=''></button>
+                    <div>
+                        <p class="timestamp">Data final: ${dataConclusaoTratada}</p>   
+                        <input type='checkbox' class='checkbox-vermais' id='vermaisa${countId}'> 
+                        <label onclick='vermais(a${countId})' for='vermaisa${countId}' class="vermais"></label>   
                     </div>
+                  </div>
+                  <div class='descricao-e-data'>
+                      <div class='div-interna-descricao-data' id='div-interna-descricao-dataa${countId}'>
+                        <label for='textareaa${countId}'>Descrição da Tarefa:</label>
+                        <p class="timestamp">Criada em: ${today}</p>
+                      </div>
+                      <div class='textarea-button' id='textarea-buttona${countId}'>
+                        <textarea id='textareaa${countId}' name=""cols="70" rows="10"></textarea>
+                        <button onclick='abrirModal(li${countId})' class='btn-deletar-tarefa'>Deletar</button>
+                  </div>
                 </div>
             </li>
-        `
+            `
     );
-    // TODO:SUGESTÃO
-
-    // const button = document.querySelector('.btn-deletar-tarefa');
-    // const div = document.querySelector('.datas-e-btn');
-    // const paragrafo = document.createElement('p');
-    // paragrafo.classList.add('timestamp')
-
-    // $dataConclusao.value == ""?(paragrafo.textContent='Data final: indefinida', div.insertBefore(paragrafo, button)) : (paragrafo.textContent=`Data final: ${$dataConclusao.value}`, div.insertBefore(paragrafo, button))
   }
   countId++;
 };
@@ -146,11 +149,10 @@ const deletarTarefa = (id) => {
 const marcarCheckbox = (id) => {
   let el = document.querySelector(`#${id.id}`);
   if (!el.checked) {
-    el.parentElement.children[2].children[1].children[1].textContent =
-      "Tarefa Finalizada";
-    el.parentElement.children[2].children[1].children[0].remove();
-    // console.log(el.parentElement.children[1].removeAttribute('onclick'))
-    $ulTarefasConcluidas.prepend(el.parentElement);
+        console.log(el.parentElement.children[2].children[1].children[0].remove())
+        // 
+        console.log(el.parentElement.children[2].children[0].children[1].children[0].textContent='Tarefa Finalizada')
+        $ulTarefasConcluidas.prepend(el.parentElement);
   }
   // else {
 
@@ -186,16 +188,16 @@ async function api() {
     $ulTarefasConcluidas.insertAdjacentHTML(
       "afterbegin",
       `
-            <li class="tarefa" id='li2${obj.id}'>
-                <input id='b${obj.id}'  class='checkbox'>
-                <label for='b${obj.id}' class="not-done label-tarefas-pendentes"></label>
-                <div class="descripcion">
+            <li class="tarefa" id='liB${obj.id}'>
+                <input id='b${obj.id}' type='checkbox' class='checkbox'>
+                <label onclick='marcarCheckbox(b${obj.id})' for='b${obj.id}' class="not-done label-tarefas-pendentes"></label>
+                <div class="descripcion" id='descripcionb${obj.id}'>
+                  <div class='titulo-e-data' id='titulo-e-datab${obj.id}'>
                         <p class="nome">${obj.title}</p>
                     <div>
-                        <p class="timestamp">Tarefa Finalizada</p>
-                        <button onclick='abrirModal(li2${obj.id})' class='btn-deletar-tarefa'><img src='../assets/highlight_off_black_24dp.svg' alt=''></button>
+                        <p class="timestamp">Tarefa Finalizada</p>   
                     </div>
-                    
+                  </div>
                 </div>
             </li>
             `
@@ -210,32 +212,47 @@ async function api() {
     $ulTarefasPendentes.insertAdjacentHTML(
       "afterbegin",
       `
-            <li class="tarefa" id='li3${obj.id}'>
+            <li class="tarefa" id='liC${obj.id}'>
                 <input id='c${obj.id}' type='checkbox' class='checkbox'>
                 <label onclick='marcarCheckbox(c${obj.id})' for='c${obj.id}' class="not-done label-tarefas-pendentes"></label>
-                <div class="descripcion">
+                <div class="descripcion" id='descripcionc${obj.id}'>
+                  <div class='titulo-e-data' id='titulo-e-datac${obj.id}'>
                         <p class="nome">${obj.title}</p>
                     <div>
-                        <p class="timestamp">Criada em: ${today}</p>
-                        <p class="timestamp">Data final: indefinida</p>
-                        <button onclick='abrirModal(li3${obj.id})' class='btn-deletar-tarefa'><img src='../assets/highlight_off_black_24dp.svg' alt=''></button>
+                        <p class="timestamp">Data final: indefinida</p>   
+                        <input type='checkbox' class='checkbox-vermais' id='vermaisc${obj.id}'> 
+                        <label onclick='vermais(c${obj.id})' for='vermaisc${obj.id}' class="vermais"></label>   
                     </div>
-
+                  </div>
+                  <div class='descricao-e-data'>
+                      <div class='div-interna-descricao-data' id='div-interna-descricao-datac${obj.id}'>
+                        <label for='textareac${obj.id}'>Descrição da Tarefa:</label>
+                        <p class="timestamp">Criada em: ${today}</p>
+                      </div>
+                      <div class='textarea-button' id='textarea-buttonc${obj.id}'>
+                        <textarea id='textareac${obj.id}' name=""cols="70" rows="10"></textarea>
+                        <button onclick='abrirModal(liC${obj.id})' class='btn-deletar-tarefa'>Deletar</button>
+                  </div>
                 </div>
             </li>
             `
-      // <textarea id='textarea' name="" id="" cols="30" rows="10"></textarea>
-      // <button id='btn-deletar2'>Deletar</button>
+
     );
   });
 }
 
+
+
 // * API
 
 buttonAPI.addEventListener("click", function () {
+
   api();
-  buttonAPI.style.background = "green";
+  buttonAPI.style.background = "#8e64c5";
   buttonAPI.style.color = "white";
+  buttonAPI.disabled=true;
+  buttonAPI.style.cursor='not-allowed';
+  
 });
 
 // * Dark mode
@@ -243,3 +260,81 @@ buttonAPI.addEventListener("click", function () {
 $toggle.addEventListener("click", function () {
   $body.classList.toggle("dark");
 });
+
+
+const vermais = id=>{
+    // let el = document.querySelector('#' +id.id)
+    let $descricaoEData = document.querySelector('#div-interna-descricao-data' +id.id)
+    let $textArea = document.querySelector('#textarea-button' +id.id);
+    let $descripcion = document.querySelector('#descripcion' +id.id)
+    let $tituloEData = document.querySelector('#titulo-e-data' +id.id)
+
+    $descricaoEData.classList.toggle('vermais-open');
+    $textArea.classList.toggle('vermais-open');
+
+    if($descricaoEData.classList.contains('vermais-open')){
+
+      $tituloEData.style.cssText=
+      `
+        margin-top: 0;
+      
+      `
+      $descripcion.style.cssText=
+      `
+      max-height: 30rem;
+      transform: scale(1.02);
+      transition: max-height .4s ease-in-out, transform .3s ease-in-out;
+
+      `
+      $descricaoEData.style.cssText=
+      `
+      display: flex;
+      /* width: 100%; */
+      visibility: visible;
+      justify-content: space-between;
+      flex-direction: row;
+      `
+  
+      $textArea.style.cssText=
+      `
+      display: flex;
+      visibility: visible;
+      /* width: 100%; */
+      justify-content: space-between;
+      flex-direction: row;
+      align-items: flex-end;
+      `
+
+    } else{
+     
+      $tituloEData.style.cssText=
+      `
+        margin-top: 1rem;
+      
+      `
+      $descripcion.style.cssText=
+      `
+      height: 100%;
+      overflow: hidden;
+      max-height: 50px;
+      `
+    $descricaoEData.style.cssText=
+    `
+    visibility: hidden;
+
+    `
+
+    $textArea.style.cssText=
+    `
+    visibility: hidden;
+
+    `
+  }
+}
+
+
+
+
+
+
+
