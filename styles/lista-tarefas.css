@@ -347,12 +347,12 @@ body.dark .api {
 }
 
 .tarefa .nome {
+  font-weight: bold;
   color: rgb(95, 95, 95);
 }
 
-.tarea .timestamp {
-  font-size: 0.9em;
-  color: rgb(134, 134, 134);
+.timestamp {
+  font-size: 0.8em;
 }
 
 /* Tarefas concluídas ----------------------------------------------------------- */

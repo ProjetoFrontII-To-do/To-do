@@ -1,4 +1,4 @@
-@import url('./common.css');
+@import url("./common.css");
 
 h1 {
   color: rgb(116, 116, 116);
@@ -23,8 +23,8 @@ form {
 
 form:after {
   position: absolute;
-  content: '';
-  width: .7em;
+  content: "";
+  width: 0.7em;
   height: 100%;
   top: 0;
   left: 0;
@@ -41,10 +41,10 @@ form:after {
 
 input {
   width: 100%;
-  padding: .4em .5em;
+  padding: 0.4em 0.5em;
   background-color: var(--app-grey);
   border: 1px solid var(--app-grey);
-  border-radius: .2em;
+  border-radius: 0.2em;
 }
 
 input:focus {
@@ -55,12 +55,12 @@ input:focus {
 label {
   width: 100%;
   font-weight: 300;
-  margin-bottom: -.1em;
+  margin-bottom: -0.1em;
   margin-top: 1.5em;
 }
 
 button {
-  padding: .3em 2em;
+  padding: 0.3em 2em;
   background-color: var(--primary);
   color: white;
   margin-top: 5em;

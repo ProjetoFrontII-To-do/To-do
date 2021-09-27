@@ -187,7 +187,7 @@ async function api() {
       "afterbegin",
       `
             <li class="tarefa" id='li2${obj.id}'>
-                <input id='b${obj.id}' type='checkbox' class='checkbox'>
+                <input id='b${obj.id}'  class='checkbox'>
                 <label for='b${obj.id}' class="not-done label-tarefas-pendentes"></label>
                 <div class="descripcion">
                         <p class="nome">${obj.title}</p>
@@ -201,6 +201,8 @@ async function api() {
             `
     );
   });
+
+  // ! Nader, tirei o type="checkbox" do input da tarefa concluída pq tava checkando de novo e dando um bugzinho, mas ainda ta dando depois que a tarefa sai das pendentes e vai pra concluída
 
   // * Adiciona as tarefas da API pendentes
 
