@@ -95,6 +95,7 @@ const addTarefa = async () => {
     $dataConclusao.style.cssText = `
     border: none;
     `;
+ 
     $ulTarefasPendentes.insertAdjacentHTML(
       "afterbegin",
       `
@@ -123,8 +124,11 @@ const addTarefa = async () => {
             </li>
             `
     );
+    $inputNovaTarefa.value='';
+    $dataConclusao.value='';
   }
   countId++;
+  
 };
 
 // * Esses arrays armazenarão os objetos "tarefas" que vierem do endpoint "https://jsonplaceholder.typicode.com/todos/". Cada objeto conterá um "id" e um "title".
@@ -182,9 +186,9 @@ async function api() {
   });
 
   // * Adiciona as tarefas da API concluídas
-
+  console.log("Id's Tarefas concluídas")
   listaTarefasConcluidas.forEach((obj) => {
-    console.log(obj);
+    console.log('Id: ', obj.id) //Optamos por mostrar o id no Console, por questão de design.
     $ulTarefasConcluidas.insertAdjacentHTML(
       "afterbegin",
       `
@@ -204,11 +208,10 @@ async function api() {
     );
   });
 
-  // ! Nader, tirei o type="checkbox" do input da tarefa concluída pq tava checkando de novo e dando um bugzinho, mas ainda ta dando depois que a tarefa sai das pendentes e vai pra concluída
-
   // * Adiciona as tarefas da API pendentes
-
+  console.log("Id's Tarefas pendentes")
   listaTarefasPendentes.forEach((obj) => {
+    console.log('Id: ', obj.id) //Optamos por mostrar o id no Console, por questão de design.
     $ulTarefasPendentes.insertAdjacentHTML(
       "afterbegin",
       `
@@ -242,7 +245,6 @@ async function api() {
 }
 
 
-
 // * API
 
 buttonAPI.addEventListener("click", function () {
@@ -263,17 +265,29 @@ $toggle.addEventListener("click", function () {
 
 
 const vermais = id=>{
-    // let el = document.querySelector('#' +id.id)
     let $descricaoEData = document.querySelector('#div-interna-descricao-data' +id.id)
     let $textArea = document.querySelector('#textarea-button' +id.id);
     let $descripcion = document.querySelector('#descripcion' +id.id)
     let $tituloEData = document.querySelector('#titulo-e-data' +id.id)
+    let $titulo = document.querySelector('.nome')
 
     $descricaoEData.classList.toggle('vermais-open');
     $textArea.classList.toggle('vermais-open');
 
     if($descricaoEData.classList.contains('vermais-open')){
 
+      $titulo.style.cssText=
+      `
+      text-overflow: inherit;
+      white-space: wrap;    
+      `
+      $titulo.style.cssText=
+      `
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      `
+      
       $tituloEData.style.cssText=
       `
         margin-top: 0;
@@ -306,7 +320,13 @@ const vermais = id=>{
       `
 
     } else{
-     
+
+      $titulo.style.cssText=
+      `
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      `
       $tituloEData.style.cssText=
       `
         margin-top: 1rem;
