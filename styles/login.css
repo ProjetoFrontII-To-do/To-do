@@ -1,7 +1,7 @@
 @import url("./common.css");
 
 h1 {
-  color: rgb(116, 116, 116);
+  color: #7753a8;
   font-weight: 300;
   margin-top: 1em;
   margin-bottom: 4em;
@@ -32,11 +32,11 @@ form:after {
 }
 
 .image {
-  height: 9em;
-  width: 9em;
+  height: 10em;
+  width: 10em;
   border-radius: 50%;
   background-color: var(--app-grey);
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 input {

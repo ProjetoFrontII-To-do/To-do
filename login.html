@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/login.css">
+    <title>ToDo</title>
+</head>
+<body>
+    <form>
+        <h1 class="Login">Login</h1>
+        <div class="image" ><img class="image" src="./img/istockphoto-921437050-612x612.jpg" alt=""></div>
+        <label> 
+            E-mail:
+            <input type="email" placeholder="seunome@email.com" required>
+        </label>
+        <label>
+        Senha:
+        <input type="password" id="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*[ !@#$%^&_=+-]).{6,12}$" title="A senha deve conter entre 6 a 12 caracteres, deve conter pelo menos uma letra maiúscula, um número e não deve conter símbolos " required>
+    </label>
+        <button>Criar Conta</button>
+        <div class="form-footer">
+            <p>ToDo</p>
+        </div>
+    </form>
+    <script src="js/validacaoLogin.js"></script>
+</body>
+</html>
