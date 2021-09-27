@@ -4,7 +4,7 @@ header {
   background: linear-gradient(90deg, var(--primary), var(--secondary));
   box-shadow: 0px 3px 5px lightgrey;
   padding: 0 3em;
-  margin-bottom: 2em;
+  margin-bottom: 1em;
 }
 
 a {
@@ -146,7 +146,7 @@ body.dark #modal-box {
   top: 50%;
   left: 50%;
   width: 10rem;
-  height:5rem;
+  height: 5rem;
   color: #fff;
   background-color: #3a3e74;
   transform: translate(-50%, -50%);
@@ -156,15 +156,19 @@ body.dark #modal-box {
   padding: 2rem;
   box-shadow: 1.5px 1.5px 5px black;
   gap: 1rem;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
 }
 
 body.dark .buttons-modal-excluir button {
   cursor: pointer;
   width: 5rem;
-  padding: .3rem;
+  padding: 0.3rem;
   color: #fff;
   background-color: #7753a8;
+}
+
+body.dark .api {
+  background: #323840;
 }
 
 /* Novas tarefa ----------------------------------------------------------- */
@@ -247,6 +251,27 @@ body.dark .buttons-modal-excluir button {
   bottom: 0;
   font-size: 12px;
   color: red;
+}
+
+.mensagem-erro-caracteres {
+  position: absolute;
+  bottom: 10px;
+  left: 60px;
+  font-size: 12px;
+  color: red;
+}
+
+/* API */
+
+.api {
+  border: 1px solid var(--secondary);
+  width: 60px;
+  height: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+  color: var(--secondary);
 }
 
 /* Lista de tarefas ----------------------------------------------------------- */
@@ -427,9 +452,9 @@ body.dark .buttons-modal-excluir button {
   top: 50%;
   left: 50%;
   width: 10rem;
-  height:5rem;
+  height: 5rem;
   color: #fff;
-  background-color: #7F86EB;
+  background-color: #7f86eb;
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
@@ -437,7 +462,7 @@ body.dark .buttons-modal-excluir button {
   padding: 2rem;
   box-shadow: 1.5px 1.5px 5px black;
   gap: 1rem;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
 }
 #modal-box p {
 }
@@ -445,9 +470,9 @@ body.dark .buttons-modal-excluir button {
 .buttons-modal-excluir button {
   cursor: pointer;
   width: 5rem;
-  padding: .3rem;
+  padding: 0.3rem;
   color: #fff;
-  background-color: #8E65C7;
+  background-color: #8e65c7;
 }
 .buttons-modal-excluir {
   display: flex;
@@ -456,8 +481,8 @@ body.dark .buttons-modal-excluir button {
   width: 100%;
   gap: 1rem;
 }
-.data-conclusao{
-  border:none;
+.data-conclusao {
+  border: none;
 }
 
 /* <div id="modal">
@@ -469,10 +494,9 @@ body.dark .buttons-modal-excluir button {
   </div>
 </div>
 </div> */
-#textarea{
+#textarea {
   /* display: none; */
 }
 
-#btn-deletar2{
-
+#btn-deletar2 {
 }

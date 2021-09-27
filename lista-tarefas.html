@@ -28,41 +28,51 @@
         <div class="user-image"></div>
       </div>
     </header>
+
     <main>
-    <form class="nova-tarefa">
-      <div class="not-done"></div>
-      <input
-        type="text"
-        placeholder="Nova tarefa"
-        id="input-nova-tarefa"
-        minlength="10"
-      />
+      <button class="api">API</button>
+      <form class="nova-tarefa">
+        <div class="not-done"></div>
 
-      <div class="data-conc">
-        <input class="data-conclusao" type="date" name="" id="data-conclusao" required/>
-        <label for="data-conclusao" class="mensagem-erro"></label>
-      </div>
+        <input
+          type="text"
+          placeholder="Nova tarefa"
+          id="input-nova-tarefa"
+          minlength="10"
+        />
+        <label for="input-nova-tarefa" class="mensagem-erro-caracteres"></label>
 
-      <button class="btn-add-tarefa">
-        <img src="./assets/plus.png" alt="Adicionar Tarefa" />
-      </button>
-    </form>
+        <div class="data-conc">
+          <input
+            class="data-conclusao"
+            type="date"
+            name=""
+            id="data-conclusao"
+            required
+          />
+          <label for="data-conclusao" class="mensagem-erro"></label>
+        </div>
 
-    <ul class="tarefas-pendentes"></ul>
+        <button class="btn-add-tarefa">
+          <img src="./assets/plus.png" alt="Adicionar Tarefa" />
+        </button>
+      </form>
 
-    <h2 class="titulo-concluida-h2">Tarefas concluídas</h2>
-    <ul class="titulo-concluida"></ul>
+      <ul class="tarefas-pendentes"></ul>
 
-    <div id="modal">
-      <div id="modal-box">
-        <p>Tem certeza que deseja excluir a tarefa?</p>
-        <div class="buttons-modal-excluir">
-          <button id="btn-cancelar">Não</button>
-          <button id="btn-deletar">Sim</button>
+      <h2 class="titulo-concluida-h2">Tarefas concluídas</h2>
+      <ul class="titulo-concluida"></ul>
+
+      <div id="modal">
+        <div id="modal-box">
+          <p>Tem certeza que deseja excluir a tarefa?</p>
+          <div class="buttons-modal-excluir">
+            <button id="btn-cancelar">Não</button>
+            <button id="btn-deletar">Sim</button>
+          </div>
         </div>
       </div>
-    </div>
-  </main>
+    </main>
     <script src="./js/app.js"></script>
   </body>
 </html>

@@ -1,19 +1,24 @@
+const $body = document.querySelector("body");
+const $toggle = document.querySelector(".toggle");
 const $ulTarefasPendentes = document.querySelector(".tarefas-pendentes");
 const $ulTarefasConcluidas = document.querySelector(
   "ul[class=titulo-concluida]"
 );
 const $inputNovaTarefa = document.querySelector("#input-nova-tarefa");
 const $formNovaTarefa = document.querySelector(".nova-tarefa");
+const $formNovaTarefaLabel = document.querySelector(
+  ".mensagem-erro-caracteres"
+);
 const $dataConclusaoMsg = document.querySelector(".mensagem-erro");
 const $btnAddTarefa = document.querySelector(".btn-add-tarefa");
 const $dataConclusao = document.querySelector(".data-conclusao");
-// const $dataConclusao2 = document.querySelector(".data-conclusao2"); //FIXME:teste
 const $modalFundo = document.querySelector("#modal");
 const $btnDeletar = document.querySelector("#btn-deletar");
 const $btnCancelar = document.querySelector("#btn-cancelar");
 const $checkbox = document.querySelector(".checkbox");
 const today = new Date().toLocaleDateString("pt-BR");
 const $cardNovaTarefa = document.querySelector(".nova-tarefa");
+const buttonAPI = document.querySelector(".api");
 // const dataM = moment($dataConclusao.value)
 // let dateFormat = moment($dataConclusao.value).format('DD/MM/YYYY')
 // const dataMoment = moment(dataM, 'DD/MM/YYYY')
@@ -57,30 +62,36 @@ const abrirModal = (id) => {
   $btnCancelar.addEventListener("click", btnCancelarTarefa);
 };
 
-
-
 let countId = 0;
 /**
- * Adiciona uma nova tarefa na "ul" de tarefas pendentes do HTML. No final, acrescenta mais 1 à variável "countId", para que o id de cada tarefa seja dinâmico.
+ * * Adiciona uma nova tarefa na "ul" de tarefas pendentes do HTML. No final, acrescenta mais 1 à variável "countId", para que o id de cada tarefa seja dinâmico.
  */
 const addTarefa = async () => {
   if ($inputNovaTarefa.value.length < 10) {
-    document.querySelector(".nova-tarefa").style.cssText = `
+    $formNovaTarefaLabel.textContent = "*Mínimo 10 caracteres";
+    $formNovaTarefa.style.cssText = `
     border: 1px solid red;
-    `; // ! falta tirar o vermelho dps que add a task
+    `;
     $btnAddTarefa.setAttribute("disabled");
   } else if ($dataConclusao.value == "") {
-    $dataConclusaoMsg.textContent = "Data obrigatória";
+    $formNovaTarefaLabel.textContent = "";
+    $dataConclusaoMsg.textContent = "*Data obrigatória";
     $dataConclusao.style.cssText = `
         border: 1px solid red;
         `;
-    // e.preventDefault(); // ! tá adicionando varias mensagens e não some depois que aparece a 1ª vez ...
   } else {
-    let dataConclusaoArray = $dataConclusao.value.split('-');
-    let dataConclusaoTratada = dataConclusaoArray[2] + "/" + dataConclusaoArray[1] + "/" + dataConclusaoArray[0]
-    document.querySelector(".nova-tarefa").style.cssText = `
+    let dataConclusaoArray = $dataConclusao.value.split("-");
+    let dataConclusaoTratada =
+      dataConclusaoArray[2] +
+      "/" +
+      dataConclusaoArray[1] +
+      "/" +
+      dataConclusaoArray[0];
+    $formNovaTarefa.style.cssText = `
     border: none;
     `;
+    $formNovaTarefaLabel.textContent = "";
+    $dataConclusaoMsg.textContent = "";
     $dataConclusao.style.cssText = `
     border: none;
     `;
@@ -113,7 +124,7 @@ const addTarefa = async () => {
   countId++;
 };
 
-//Esses arrays armazenarão os objetos "tarefas" que vierem do endpoint "https://jsonplaceholder.typicode.com/todos/". Cada objeto conterá um "id" e um "title".
+// * Esses arrays armazenarão os objetos "tarefas" que vierem do endpoint "https://jsonplaceholder.typicode.com/todos/". Cada objeto conterá um "id" e um "title".
 let listaTarefasPendentes = [];
 let listaTarefasConcluidas = [];
 
@@ -123,7 +134,7 @@ $btnAddTarefa.addEventListener("click", (e) => {
 });
 
 /**
- * Deleta a tarefa da aplicação.
+ * * Deleta a tarefa da aplicação.
  * @param {*} id
  */
 const deletarTarefa = (id) => {
@@ -148,9 +159,9 @@ const marcarCheckbox = (id) => {
 };
 
 /**
- * Recupera e trata os dados da Fake API "jsonplaceholder".
+ * * Recupera e trata os dados da Fake API "jsonplaceholder".
  */
-(async () => {
+async function api() {
   let response = await fetch("https://jsonplaceholder.typicode.com/todos/");
   let jsonData = await response.json();
 
@@ -168,7 +179,7 @@ const marcarCheckbox = (id) => {
     }
   });
 
-  // let countId2 = 0;
+  // * Adiciona as tarefas da API concluídas
 
   listaTarefasConcluidas.forEach((obj) => {
     console.log(obj);
@@ -188,19 +199,11 @@ const marcarCheckbox = (id) => {
                 </div>
             </li>
             `
-      //   <li class="tarefa" id='li2${obj.id}'>
-      //     <input id='${obj.id}' type='checkbox' class='checkbox' >
-      //     <label onclick='marcarCheckbox(${obj.id})' for='${obj.id}'></label>
-      //     <div class="descripcion">
-      //           <p class="nome">${obj.id}</p>
-      //           <p class="nome">${obj.title}</p>
-      //     </div>
-      //   </li>
     );
-    //   countId2++;
   });
 
-  // let countId3 = 0;
+  // * Adiciona as tarefas da API pendentes
+
   listaTarefasPendentes.forEach((obj) => {
     $ulTarefasPendentes.insertAdjacentHTML(
       "afterbegin",
@@ -219,17 +222,21 @@ const marcarCheckbox = (id) => {
                 </div>
             </li>
             `
-            // <textarea id='textarea' name="" id="" cols="30" rows="10"></textarea> 
-            // <button id='btn-deletar2'>Deletar</button>
-
+      // <textarea id='textarea' name="" id="" cols="30" rows="10"></textarea>
+      // <button id='btn-deletar2'>Deletar</button>
     );
   });
-})();
+}
 
-// Dark mode
+// * API
 
-const $body = document.querySelector("body");
-const $toggle = document.querySelector(".toggle");
+buttonAPI.addEventListener("click", function () {
+  api();
+  buttonAPI.style.background = "green";
+  buttonAPI.style.color = "white";
+});
+
+// * Dark mode
 
 $toggle.addEventListener("click", function () {
   $body.classList.toggle("dark");
