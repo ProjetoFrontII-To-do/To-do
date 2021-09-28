@@ -8,7 +8,7 @@
     <title>ToDo</title>
   </head>
   <body>
-    <form>
+    <form name='formulario'>
       <h1>Cadastre sua conta</h1>
       <p>Esta é uma plataforma teste de uma lista de tarefas.</p>
       <!-- <div class="image">
@@ -22,6 +22,7 @@
         Usuário:
         <input
           id="nome"
+          name='nome'
           type="text"
           placeholder="Insira um nome de usuário"
           required
@@ -32,6 +33,7 @@
         <input
           type="password"
           id="password"
+          name='password'
           pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*[ !@#$%^&_=+-]).{6,12}$"
           title="A senha deve conter entre 6 a 12 caracteres, deve conter pelo menos uma letra maiúscula, um número e não deve conter símbolos "
           required
@@ -39,13 +41,13 @@
       </label>
       <label>
         Repetir senha:
-        <input type="password" id="confirm_password" required />
+        <input type="password" id="confirm_password" name='confirm_password' required />
       </label>
       <label>
         E-mail:
-        <input type="email" placeholder="seunome@email.com" required />
+        <input type="email" name='email' placeholder="seunome@email.com" required />
       </label>
-      <button id='btn-cadastro' type='submit'>Criar Conta</button>
+      <button id='btn-cadastro'>Criar Conta</button>
     </form>
     <script src="js/validacaoLogin.js"></script>
   </body>

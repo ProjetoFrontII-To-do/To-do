@@ -2,6 +2,7 @@ const password = document.getElementById("password")
 const $nome = document.getElementById("nome")
 const confirm_password = document.getElementById("confirm_password");
 const $btnCadastro = document.querySelector('#btn-cadastro')
+const $form = document.querySelector('form')
 
 if(localStorage.getItem('usuario')!= null){
   localStorage.removeItem('usuario')
@@ -15,18 +16,20 @@ function validatePassword(){
     confirm_password.setCustomValidity('');
   }
 }
-    
 
 password.onchange = validatePassword;
 confirm_password.onkeyup = validatePassword;
 
-$btnCadastro.addEventListener('click',e=>{
 
-  let usuario = $nome.value;
-  let senha = password.value;
-      
-  localStorage.setItem('usuario', usuario);
-  localStorage.setItem('senha', senha);
-  location.href='../login.html'
+document.formulario.addEventListener('submit',e=>{
+
   e.preventDefault();
+  let usuario = document.formulario.nome.value;
+  let senha = document.formulario.password.value;
+  localStorage.setItem('usuario', usuario);
+  localStorage.setItem('senha', senha)
+
+  let url='../login.html'
+  window.location.assign(url);
+
 })
