@@ -23,6 +23,8 @@ const $nomeUsuario = document.querySelector('#usuario-p')
 
 $nomeUsuario.textContent = `${localStorage.getItem('usuario')}`
 
+
+//Trata a data do dia para que seja aceita como valor do atributo "min" do input "data de conclusão", para que este campo aceite apenas a inserção de datas futuras.
 let data = new Date().toLocaleDateString("en").split("/");
 let dataTratada;
 if (data[0] < 10 && data[1] < 10) {
@@ -34,25 +36,41 @@ if (data[0] < 10 && data[1] < 10) {
 } else {
   dataTratada = `${data[2]}-${data[0]}-${data[1]}`;
 }
-
 $dataConclusao.min = dataTratada;
 
+
+
 let arrayIdLi = [];
+
+/**
+ * Fecha o modal de deletar tarefa.
+ */
 const fecharModal = (e) => {
   if (e.target.id === "modal") {
     $modalFundo.style.cssText = `display: none`;
   }
 };
+
+/**
+ * Executa a função de deletar tarefa.
+ */
 const btnDeletarTarefa = (e) => {
   deletarTarefa(arrayIdLi[0]);
   $modalFundo.style.cssText = `display: none`;
 };
+
+/**
+ * Fecha o modal de deletar tarefa e remove os eventos de clique atribuídos aos botões de cancelar e deletar tarefa.
+ */
 const btnCancelarTarefa = (e) => {
   $modalFundo.style.cssText = `display: none`;
   $btnDeletar.removeEventListener("click", btnDeletarTarefa);
   $btnCancelar.removeEventListener("click", btnCancelarTarefa);
 };
 
+/**
+ * Abre o modal de deletar tarefa.
+ */
 const abrirModal = (id) => {
   arrayIdLi = [];
   arrayIdLi.push(id);
@@ -150,6 +168,11 @@ const deletarTarefa = (id) => {
   el.parentNode.removeChild(el);
 };
 
+
+/**
+ * * Marca o checkbox da tarefa e a envia para o campo de tarefa concluídas.
+ * @param {*} id
+ */
 const marcarCheckbox = (id) => {
   let el = document.querySelector(`#${id.id}`);
   if (!el.checked) {
@@ -259,7 +282,9 @@ $toggle.addEventListener("click", function () {
   $body.classList.toggle("dark");
 });
 
-
+/**
+ * Amplia a tarefa, para que o usuário possa ver mais informações sobre ela.
+ */
 const vermais = id=>{
     let $descricaoEData = document.querySelector('#div-interna-descricao-data' +id.id)
     let $textArea = document.querySelector('#textarea-button' +id.id);

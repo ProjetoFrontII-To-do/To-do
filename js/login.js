@@ -1,20 +1,9 @@
 const password = document.getElementById("password")
 const $nome = document.getElementById("nomeLogin")
-// const confirm_password = document.getElementById("confirm_password");
 const $btnLogar = document.querySelector('#logar')
 
-// function validatePassword(){
-//   if(password.value != confirm_password.value) {
-//     confirm_password.setCustomValidity("Senhas diferentes!");
-//   } else {
-//     confirm_password.setCustomValidity('');
-//   }
-// }
-    
 
-// password.onchange = validatePassword;
-// confirm_password.onkeyup = validatePassword;
-
+//Verifica se o nome de usuário e a senha digitadas são iguais ao nome e senha armazenados no localstorage (que a pessoa armazenou quando efetuou o cadastro).
 $btnLogar.addEventListener('click',e=>{
 
   let usuario = $nome.value;
@@ -24,6 +13,5 @@ $btnLogar.addEventListener('click',e=>{
     location.href='../lista-tarefas.html'
   } else{
     document.querySelector('span').textContent = "Verifique o seu usuário e senha e tente novamente."
-    // alert("Verifique o seu usuário e senha e tente novamente.")
   }
 })
