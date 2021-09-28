@@ -1,30 +1,46 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/login.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/login.css" />
     <title>ToDo</title>
-</head>
-<body>
-    <form>
-        <h1 class="Login">Login</h1>
-        <div class="image" ><img class="image" src="./img/istockphoto-921437050-612x612.jpg" alt=""></div>
-        <label> 
-            E-mail:
-            <input type="email" placeholder="seunome@email.com" required>
-        </label>
-        <label>
+  </head>
+  <body>
+    <form name='formLogin' id='formLogin'>
+      <h1>Login</h1>
+      <p>Entre com o nome e a senha que você cadastrou na etapa anterior.</p>
+      <!-- <div class="image">
+        <img
+          class="image"
+          src="./img/istockphoto-921437050-612x612.jpg"
+          alt=""
+        />
+      </div> -->
+      <label>
+        Usuário:
+        <input
+          id="nomeLogin"
+          type="text"
+          placeholder="Preencha com o nome cadastrado"
+          required
+        />
+      </label>
+      <label>
         Senha:
-        <input type="password" id="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*[ !@#$%^&_=+-]).{6,12}$" title="A senha deve conter entre 6 a 12 caracteres, deve conter pelo menos uma letra maiúscula, um número e não deve conter símbolos " required>
-    </label>
-        <button>Criar Conta</button>
-        <div class="form-footer">
-            <p>ToDo</p>
-        </div>
+        <input
+          type="password"
+          id="password"
+          placeholder="Insira a sua senha"
+          required
+        />
+      </label>
+      <span>
+      </span>
+      <button type='submit' form='formLogin' id='logar'>Logar</button>
     </form>
-    <script src="js/validacaoLogin.js"></script>
-</body>
+
+    <script src="js/login.js"></script>
+  </body>
 </html>

@@ -19,9 +19,9 @@ const $checkbox = document.querySelector(".checkbox");
 const today = new Date().toLocaleDateString("pt-BR");
 const $cardNovaTarefa = document.querySelector(".nova-tarefa");
 const buttonAPI = document.querySelector(".api");
-// const dataM = moment($dataConclusao.value)
-// let dateFormat = moment($dataConclusao.value).format('DD/MM/YYYY')
-// const dataMoment = moment(dataM, 'DD/MM/YYYY')
+const $nomeUsuario = document.querySelector('#usuario-p')
+
+$nomeUsuario.textContent = `${localStorage.getItem('usuario')}`
 
 let data = new Date().toLocaleDateString("en").split("/");
 let dataTratada;
@@ -158,10 +158,6 @@ const marcarCheckbox = (id) => {
         console.log(el.parentElement.children[2].children[0].children[1].children[0].textContent='Tarefa Finalizada')
         $ulTarefasConcluidas.prepend(el.parentElement);
   }
-  // else {
-
-  //     $ulTarefasPendentes.prepend((el.parentElement))
-  // }
 };
 
 /**
@@ -192,7 +188,7 @@ async function api() {
     $ulTarefasConcluidas.insertAdjacentHTML(
       "afterbegin",
       `
-            <li class="tarefa" id='liB${obj.id}'>
+            <li class="tarefa" id='lib${obj.id}'>
                 <input id='b${obj.id}' type='checkbox' class='checkbox'>
                 <label onclick='marcarCheckbox(b${obj.id})' for='b${obj.id}' class="not-done label-tarefas-pendentes"></label>
                 <div class="descripcion" id='descripcionb${obj.id}'>
@@ -215,7 +211,7 @@ async function api() {
     $ulTarefasPendentes.insertAdjacentHTML(
       "afterbegin",
       `
-            <li class="tarefa" id='liC${obj.id}'>
+            <li class="tarefa" id='lic${obj.id}'>
                 <input id='c${obj.id}' type='checkbox' class='checkbox'>
                 <label onclick='marcarCheckbox(c${obj.id})' for='c${obj.id}' class="not-done label-tarefas-pendentes"></label>
                 <div class="descripcion" id='descripcionc${obj.id}'>
@@ -234,7 +230,7 @@ async function api() {
                       </div>
                       <div class='textarea-button' id='textarea-buttonc${obj.id}'>
                         <textarea id='textareac${obj.id}' name=""cols="70" rows="10"></textarea>
-                        <button onclick='abrirModal(liC${obj.id})' class='btn-deletar-tarefa'>Deletar</button>
+                        <button onclick='abrirModal(lic${obj.id})' class='btn-deletar-tarefa'>Deletar</button>
                   </div>
                 </div>
             </li>
@@ -265,21 +261,23 @@ $toggle.addEventListener("click", function () {
 
 
 const vermais = id=>{
+  fecharVermaisCriadas()
     let $descricaoEData = document.querySelector('#div-interna-descricao-data' +id.id)
     let $textArea = document.querySelector('#textarea-button' +id.id);
     let $descripcion = document.querySelector('#descripcion' +id.id)
     let $tituloEData = document.querySelector('#titulo-e-data' +id.id)
     let $titulo = document.querySelector('.nome')
+    let $tarefa = document.querySelector('#li'+id.id)
+    $tarefa.classList.toggle('vermais-open');
+    // $descricaoEData.classList.toggle('vermais-open');
+    // $textArea.classList.toggle('vermais-open');
 
-    $descricaoEData.classList.toggle('vermais-open');
-    $textArea.classList.toggle('vermais-open');
-
-    if($descricaoEData.classList.contains('vermais-open')){
+    if($tarefa.classList.contains('vermais-open')){
 
       $titulo.style.cssText=
       `
       text-overflow: inherit;
-      white-space: wrap;    
+      white-space: pre-wrap;    
       `
       $titulo.style.cssText=
       `
@@ -353,8 +351,52 @@ const vermais = id=>{
 }
 
 
+function fecharVermaisCriadas(){
+
+  let $descricaoEData = document.querySelector('.div-interna-descricao-data')
+  let $textArea = document.querySelector('.textarea-button');
+  let $descripcion = document.querySelector('.descripcion')
+  let $tituloEData = document.querySelector('.titulo-e-data')
+  let $titulo = document.querySelector('.nome')
 
 
+
+    // let $tarefa = document.querySelectorAll('.tarefa')
+    // for(let i=0; i< $tarefa.length; i++){
+    //   console.log($tarefa[i].className = 'tarefa')
+
+    //   if($tarefa[i].classList.contains('vermais-open')){
+
+  
+        $titulo.style.cssText=
+        `
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        `
+        $tituloEData.style.cssText=
+        `
+          margin-top: 1rem;
+        
+        `
+        $descripcion.style.cssText=
+        `
+        height: 100%;
+        overflow: hidden;
+        max-height: 50px;
+        `
+      $descricaoEData.style.cssText=
+      `
+      visibility: hidden;
+  
+      `
+  
+      $textArea.style.cssText=
+      `
+      visibility: hidden;
+  
+      `
+    }
 
 
 

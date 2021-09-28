@@ -2,6 +2,8 @@
 
 body {
   background: linear-gradient(90deg, var(--primary), var(--secondary));
+  display: flex;
+  align-items: center;
 }
 
 h1 {
@@ -28,6 +30,7 @@ form {
   padding: 1em 2em;
   box-sizing: border-box;
   border-radius: 0.3em;
+
 }
 
 /* form:after {
@@ -79,4 +82,22 @@ button {
   font-size: 1em;
   border-radius: 0.4em;
   cursor: pointer;
+}
+
+#logar{
+  position: absolute;
+  bottom: -3%;
+  padding: 0.3em 2em;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  color: white;
+  margin-top: 5em;
+  font-weight: 400;
+  font-size: 1em;
+  border-radius: 0.4em;
+  cursor: pointer;
+}
+
+span{
+  padding: 1rem;
+  color: red;
 }
