@@ -266,13 +266,11 @@ const vermais = id=>{
     let $descripcion = document.querySelector('#descripcion' +id.id)
     let $tituloEData = document.querySelector('#titulo-e-data' +id.id)
     let $titulo = document.querySelector('.nome')
-    let $tarefa = document.querySelector('#li'+id.id)
-    
-    $tarefa.classList.toggle('vermais-open');
-    // $descricaoEData.classList.toggle('vermais-open');
-    // $textArea.classList.toggle('vermais-open');
 
-    if($tarefa.classList.contains('vermais-open')){
+    $descricaoEData.classList.toggle('vermais-open');
+    $textArea.classList.toggle('vermais-open');
+
+    if($descricaoEData.classList.contains('vermais-open')){
 
       $titulo.style.cssText=
       `
