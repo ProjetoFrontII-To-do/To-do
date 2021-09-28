@@ -39,9 +39,12 @@ a {
 /* DARK MODE */
 
 .toggle {
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   margin-left: auto;
   padding: 0.7em 0.7em;
   background-color: #707b83;
