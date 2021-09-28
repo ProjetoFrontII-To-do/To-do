@@ -34,7 +34,7 @@ document.formulario.addEventListener('submit',e=>{
   localStorage.setItem('usuario', usuario);
   localStorage.setItem('senha', senha)
 
-  let url='../login.html'
+  let url='../../To-do/login.html'
   window.location.assign(url);
 
 })

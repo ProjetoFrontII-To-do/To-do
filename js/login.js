@@ -10,7 +10,7 @@ $btnLogar.addEventListener('click',e=>{
   let senha = password.value;
   e.preventDefault();
   if(localStorage.getItem('usuario')==usuario && localStorage.getItem('senha')==senha ){
-    location.href='../lista-tarefas.html'
+    location.href='../../To-do/lista-tarefas.html'
   } else{
     document.querySelector('span').textContent = "Verifique o seu usuário e senha e tente novamente."
   }
