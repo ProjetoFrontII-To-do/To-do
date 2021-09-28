@@ -1,38 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/login.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/login.css" />
     <title>ToDo</title>
-</head>
-<body>
+  </head>
+  <body>
     <form>
-        <h1>Cadastro de conta</h1>
-        <div class="image" ><img class="image" src="./img/istockphoto-921437050-612x612.jpg" alt=""></div>
-        <label> 
-          Nome:
-          <input id="nome" type="text" placeholder="Preencha seu nome completo" required>
-        </label>        
-          <label>
+      <h1>Cadastre sua conta</h1>
+      <p>Esta é uma plataforma teste de uma lista de tarefas.</p>
+      <!-- <div class="image">
+        <img
+          class="image"
+          src="./img/istockphoto-921437050-612x612.jpg"
+          alt=""
+        />
+      </div> -->
+      <label>
+        Nome:
+        <input
+          id="nome"
+          type="text"
+          placeholder="Preencha seu nome completo"
+          required
+        />
+      </label>
+      <label>
         Senha:
-        <input type="password" id="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*[ !@#$%^&_=+-]).{6,12}$" title="A senha deve conter entre 6 a 12 caracteres, deve conter pelo menos uma letra maiúscula, um número e não deve conter símbolos " required>
+        <input
+          type="password"
+          id="password"
+          pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?!.*[ !@#$%^&_=+-]).{6,12}$"
+          title="A senha deve conter entre 6 a 12 caracteres, deve conter pelo menos uma letra maiúscula, um número e não deve conter símbolos "
+          required
+        />
       </label>
-          <label>
+      <label>
         Repetir senha:
-        <input type="password" id="confirm_password" required>
+        <input type="password" id="confirm_password" required />
       </label>
-          <label>
+      <label>
         E-mail:
-        <input type="email" placeholder="seunome@email.com" required>
+        <input type="email" placeholder="seunome@email.com" required />
       </label>
-        <button>Criar Conta</button>
-        <div class="form-footer">
-            <p>ToDo</p>
-        </div>
+      <button>Criar Conta</button>
     </form>
     <script src="js/validacaoLogin.js"></script>
-</body>
+  </body>
 </html>

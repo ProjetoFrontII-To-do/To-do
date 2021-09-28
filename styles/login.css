@@ -1,27 +1,41 @@
 @import url("./common.css");
 
+body {
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(0, 126, 150, 1) 0%,
+    rgba(222, 0, 255, 1) 100%
+  );
+}
+
 h1 {
-  color: #7753a8;
+  color: #4457b6;
   font-weight: 300;
-  margin-top: 1em;
-  margin-bottom: 4em;
+  margin-top: 0.3em;
+  margin-bottom: 1em;
+}
+
+p {
+  color: #4457b6;
 }
 
 form {
   position: relative;
-  height: 100vh;
+  height: 31.3em;
   width: 30em;
   background-color: white;
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin: 0 calc(50% - 15em);
-  box-shadow: 0 5px 5px lightgrey;
-  padding: 2em 4em;
+  margin: 4em calc(50% - 15em);
+  box-shadow: 3px 0 2px lightgrey;
+  padding: 1em 2em;
   box-sizing: border-box;
+  border-radius: 0.3em;
 }
 
-form:after {
+/* form:after {
   position: absolute;
   content: "";
   width: 0.7em;
@@ -29,22 +43,23 @@ form:after {
   top: 0;
   left: 0;
   background: linear-gradient(var(--primary), var(--secondary));
-}
+} */
 
-.image {
+/* .image {
   height: 10em;
   width: 10em;
   border-radius: 50%;
   background-color: var(--app-grey);
   margin-bottom: 1em;
-}
+} */
 
 input {
   width: 100%;
-  padding: 0.4em 0.5em;
+  padding: 0.5em 0.5em;
   background-color: var(--app-grey);
   border: 1px solid var(--app-grey);
-  border-radius: 0.2em;
+  border-radius: 0.3em;
+  color: #4457b6;
 }
 
 input:focus {
@@ -53,6 +68,7 @@ input:focus {
 }
 
 label {
+  color: #4457b6;
   width: 100%;
   font-weight: 300;
   margin-bottom: -0.1em;
@@ -61,15 +77,15 @@ label {
 
 button {
   padding: 0.3em 2em;
-  background-color: var(--primary);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(0, 76, 150, 1) 0%,
+    rgba(222, 0, 255, 1) 100%
+  );
   color: white;
   margin-top: 5em;
   font-weight: 400;
   font-size: 1em;
-}
-
-.form-footer {
-  margin-top: auto;
-  color: grey;
-  font-size: 2em;
+  border-radius: 0.4em;
 }
