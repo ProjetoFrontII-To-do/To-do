@@ -28,5 +28,5 @@ $btnCadastro.addEventListener('click',e=>{
   localStorage.setItem('usuario', usuario);
   localStorage.setItem('senha', senha);
   location.href='../login.html'
-    e.preventDefault();
+  e.preventDefault();
 })

@@ -261,13 +261,13 @@ $toggle.addEventListener("click", function () {
 
 
 const vermais = id=>{
-  fecharVermaisCriadas()
     let $descricaoEData = document.querySelector('#div-interna-descricao-data' +id.id)
     let $textArea = document.querySelector('#textarea-button' +id.id);
     let $descripcion = document.querySelector('#descripcion' +id.id)
     let $tituloEData = document.querySelector('#titulo-e-data' +id.id)
     let $titulo = document.querySelector('.nome')
     let $tarefa = document.querySelector('#li'+id.id)
+    
     $tarefa.classList.toggle('vermais-open');
     // $descricaoEData.classList.toggle('vermais-open');
     // $textArea.classList.toggle('vermais-open');
@@ -350,53 +350,6 @@ const vermais = id=>{
   }
 }
 
-
-function fecharVermaisCriadas(){
-
-  let $descricaoEData = document.querySelector('.div-interna-descricao-data')
-  let $textArea = document.querySelector('.textarea-button');
-  let $descripcion = document.querySelector('.descripcion')
-  let $tituloEData = document.querySelector('.titulo-e-data')
-  let $titulo = document.querySelector('.nome')
-
-
-
-    // let $tarefa = document.querySelectorAll('.tarefa')
-    // for(let i=0; i< $tarefa.length; i++){
-    //   console.log($tarefa[i].className = 'tarefa')
-
-    //   if($tarefa[i].classList.contains('vermais-open')){
-
-  
-        $titulo.style.cssText=
-        `
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        `
-        $tituloEData.style.cssText=
-        `
-          margin-top: 1rem;
-        
-        `
-        $descripcion.style.cssText=
-        `
-        height: 100%;
-        overflow: hidden;
-        max-height: 50px;
-        `
-      $descricaoEData.style.cssText=
-      `
-      visibility: hidden;
-  
-      `
-  
-      $textArea.style.cssText=
-      `
-      visibility: hidden;
-  
-      `
-    }
 
 
 
